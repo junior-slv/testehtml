@@ -1,14 +1,21 @@
 const express = require("express");
 const cors = require("cors");
-const bodyParser = require("body-parser");  // Adicionando o body-parser
+const bodyParser = require("body-parser");
 
 const app = express();
 const port = 3000;
 
-const allowedOrigin = "https://testehtml-4jx9.vercel.app";
+// Adicione o domínio do Google Tag Manager (GTM) à lista de origens permitidas
+const allowedOrigins = ["https://testehtml-4jx9.vercel.app", "https://www.googletagmanager.com"];
 
 const corsOptions = {
-  origin: allowedOrigin,
+  origin: function (origin, callback) {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error("Not allowed by CORS"));
+    }
+  },
   methods: ["GET", "POST", "PUT", "DELETE"],
 };
 
