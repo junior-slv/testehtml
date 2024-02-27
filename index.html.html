@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <input
+      id="creditCardpayment-card-0Number"
+      data-testid="creditCardpayment-card-0Number"
+      class="input-medium"
+      name="cardNumber"
+      type="tel"
+      maxlength="30"
+      value=""
+    />
+    <input
+      class="input-medium"
+      id="creditCardpayment-card-0Name"
+      name="ccName"
+      type="text"
+      value=""
+    />
+    <select
+      class="input-mini"
+      id="creditCardpayment-card-0Month"
+      name="cardExpirationMonth"
+    >
+      <!-- Opções do mês... -->
+    </select>
+    <select
+      class="input-mini"
+      id="creditCardpayment-card-0Year"
+      name="cardExpirationYear"
+    >
+      <!-- Opções do ano... -->
+    </select>
+    <input
+      id="creditCardpayment-card-0Code"
+      class="input-mini"
+      maxlength="3"
+      autocomplete="off"
+      type="tel"
+      value=""
+    />
+    <input
+      id="holder-document-0"
+      data-testid="holder-document-0"
+      class="input-small"
+      type="tel"
+      value=""
+      placeholder="999.999.999-99"
+    />
+
+    <button onclick="checkout()">Enviar POST</button>
+
+    <script>
+      function checkout() {
+        console.log("checkout feito");
+      }
+    </script>
+    <!-- Google Tag Manager -->
+    <script>
+      (function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != "dataLayer" ? "&l=" + l : "";
+        j.async = true;
+        j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, "script", "dataLayer", "GTM-K8N57RL7");
+    </script>
+    <!-- End Google Tag Manager -->
+  </body>
+</html>
