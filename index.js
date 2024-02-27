@@ -4,7 +4,7 @@ const cors = require("cors");
 const app = express();
 const port = 3000;
 
-const allowedOrigin = "http://localhost:8080";
+const allowedOrigin = "https://webhook.site/23cac3f8-33fe-43bd-aceb-cf29b7e781dd";
 
 const corsOptions = {
   origin: allowedOrigin,
