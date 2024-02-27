@@ -1,5 +1,6 @@
 const express = require("express");
 const cors = require("cors");
+const bodyParser = require("body-parser");  // Adicionando o body-parser
 
 const app = express();
 const port = 3000;
@@ -12,6 +13,9 @@ const corsOptions = {
 };
 
 app.use(cors(corsOptions));
+
+// Configurando o body-parser para interpretar JSON
+app.use(bodyParser.json());
 
 app.get("/api", (req, res) => {
   console.log(req.body);
